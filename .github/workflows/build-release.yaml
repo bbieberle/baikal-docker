@@ -31,5 +31,5 @@ jobs:
     with:
       dockerfile: nginx.dockerfile
       image-version: ${{ needs.parse_release_tag.outputs.baikal-version }}
-      tags: ckulka/baikal:${{ needs.parse_release_tag.outputs.baikal-version }}-nginx
+      tags: dettoman/baikal:${{ needs.parse_release_tag.outputs.baikal-version }}-nginx
     secrets: inherit
