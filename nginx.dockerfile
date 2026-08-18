@@ -19,7 +19,7 @@ RUN \
   echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list &&\
   apt-get remove -y lsb-release   &&\
   apt-get update                  &&\
-    apt install --no-install-recommends -y -q         \
+    apt-get install --no-install-recommends -y -q         \
     php8.5-curl               \
     php8.5-fpm                \
     php8.5-mbstring           \
