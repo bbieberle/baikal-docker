@@ -9,14 +9,17 @@ RUN apk add unzip && unzip -q baikal-$VERSION.zip
 # Final Docker image
 FROM nginx:1
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install dependencies: PHP (with libffi6 dependency) & SQLite3
-RUN curl -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg &&\
-  apt update                  &&\
-  apt install -y lsb-release  &&\
+RUN \
+  curl -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg &&\
+  apt-get update                  &&\
+  apt-get install --no-install-recommends -y -q lsb-release  &&\
   echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list &&\
-  apt remove -y lsb-release   &&\
-  apt update                  &&\
-    apt install -y            \
+  apt-get remove -y lsb-release   &&\
+  apt-get update                  &&\
+    apt install --no-install-recommends -y -q         \
     php8.5-curl               \
     php8.5-fpm                \
     php8.5-mbstring           \
@@ -37,3 +40,5 @@ COPY files/nginx.conf /etc/nginx/conf.d/default.conf
 
 VOLUME /var/www/baikal/config
 VOLUME /var/www/baikal/Specific
+
+ENV DEBIAN_FRONTENT=
