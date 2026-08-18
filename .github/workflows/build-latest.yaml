@@ -6,8 +6,8 @@ name: Latest images
 
 on:
   # Rebuild every week on Sunday at 8:20 UTC
-  schedule:
-    - cron: 20 8 * * 0
+  #schedule:
+  #  - cron: 20 8 * * 0
 
   # Build when a release is published
   release:
